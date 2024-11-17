@@ -1,0 +1,20 @@
+print("Nicolle Toussaint for fun codes")
+print("Hex Coder")
+
+import webcolors
+
+def get_hex_color(color_name):
+    try:
+        hex_code = webcolors.name_to_hex(color_name)
+        return hex_code
+    except ValueError:
+        return "Color name not found."
+
+# Get user input and strip any extra whitespace
+color_description = input("Enter a color description: ").strip()
+
+# Get the hex code for the provided color description
+hex_code = get_hex_color(color_description)
+
+# Print the result
+print(f"The hex code for '{color_description}' is: {hex_code}")
