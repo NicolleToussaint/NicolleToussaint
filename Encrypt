@@ -1,0 +1,42 @@
+print("Nicolle Toussaint 2318394 Nov 16th 2024")
+print("Toussaint Encrypt")
+# Define a dictionary with codes for each letter
+codes = {
+    'A': '%', 'a': '9', 'B': '@', 'b': '#', 'C': '!', 'c': '$', 'D': '&', 'd': '1', 
+    'E': '^', 'e': '2', 'F': '*', 'f': '3', 'G': '(', 'g': '4', 'H': ')', 'h': '5', 
+    'I': '_', 'i': '6', 'J': '+', 'j': '7', 'K': '-', 'k': '8', 'L': '=', 'l': '0', 
+    'M': '[', 'm': ']', 'N': '{', 'n': '}', 'O': ';', 'o': ':', 'P': ',', 'p': '.', 
+    'Q': '/', 'q': '?', 'R': '<', 'r': '>', 'S': '!', 's': '@', 'T': '#', 't': '$', 
+    'U': '%', 'u': '^', 'V': '&', 'v': '*', 'W': '(', 'w': ')', 'X': '_', 'x': '+', 
+    'Y': '-', 'y': '=', 'Z': '[', 'z': ']'
+}
+
+def encrypt_file(input_filename, output_filename):
+    try:
+        with open(input_filename, 'r') as infile:
+            # Read the contents of the input file
+            text = infile.read()
+
+        encrypted_text = ""
+
+        # Encrypt each character in the input text using the dictionary
+        for char in text:
+            if char in codes:
+                encrypted_text += codes[char]  # Replace with code if found in dictionary
+            else:
+                encrypted_text += char  # Leave characters not in the dictionary unchanged
+
+        # Write the encrypted text to the output file
+        with open(output_filename, 'w') as outfile:
+            outfile.write(encrypted_text)
+
+        print(f"File '{input_filename}' has been encrypted and saved as '{output_filename}'.")
+    except FileNotFoundError:
+        print(f"Error: The file '{input_filename}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+input_filename = "text.txt"  
+output_filename = "encrypted.txt"
+encrypt_file(input_filename, output_filename)
