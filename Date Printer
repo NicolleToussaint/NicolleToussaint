@@ -1,0 +1,30 @@
+print ("Nicolle Toussaint 2318394")
+def format_date(date_string):
+    # Split the input date string
+    month, day, year = date_string.split('/')
+    
+    # Convert month to an integer
+    month = int(month)
+    
+    # List of month names
+    month_names = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+    
+    # Get the month name
+    month_name = month_names[month - 1]  # Adjust for 0-based index
+    
+    # Format the output
+    formatted_date = f"{month_name} {int(day)}, {year}"
+    return formatted_date
+
+# Get user input
+user_input = input("Enter a date in the format mm/dd/yyyy: ")
+
+# Format the date
+try:
+    formatted_date = format_date(user_input)
+    print(f"The formatted date is: {formatted_date}")
+except (ValueError, IndexError):
+    print("Invalid date format. Please ensure it is mm/dd/yyyy.")
