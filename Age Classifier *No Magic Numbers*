@@ -1,0 +1,40 @@
+print("Nicolle Toussaint 2318394 Sep 17th, 2024")
+print("This is Toussaint's Age Classifier corrected")
+
+# Define constants for age categories
+INFANT_MAX_AGE = 1
+CHILD_MAX_AGE = 13
+TEENAGER_MAX_AGE = 20
+
+# Defining the classification of the age inputted
+def categorize_age(age):
+    if age <= INFANT_MAX_AGE:
+        return "infant"
+    elif INFANT_MAX_AGE < age < CHILD_MAX_AGE:
+        return "child"
+    elif CHILD_MAX_AGE <= age < TEENAGER_MAX_AGE:
+        return "teenager"
+    else:
+        return "adult"
+
+# Classify the age inputted
+def main():
+    try:
+        # Get user input
+        age = int(input("Please enter the person's age: "))
+
+        # Ensure age is non-negative
+        if age < 0:
+            print("Age cannot be negative. Please enter a valid age.")
+            return
+
+        # Categorize the age and display the result
+        category = categorize_age(age)
+        print(f"The person is an {category}.")
+    
+    except ValueError:
+        print("Invalid input. Please enter a valid integer for the age.")
+
+# Main function to run
+if __name__ == "__main__":
+    main()
