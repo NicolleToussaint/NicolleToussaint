@@ -1,0 +1,41 @@
+# Define constants for character types
+UPPERCASE_START = 'A'
+UPPERCASE_END = 'Z'
+LOWERCASE_START = 'a'
+print ("Nicolle Toussaint 2318394")
+LOWERCASE_END = 'z'
+DIGIT_START = '0'
+DIGIT_END = '9'
+WHITESPACE_CHARS = {' ', '\t', '\n', '\r', '\f', '\v'}  # Set of whitespace characters
+
+def count_characters(filename):
+    # Initialize counts
+    uppercase_count = 0
+    lowercase_count = 0
+    digit_count = 0
+    whitespace_count = 0
+    
+    # Read the file
+    with open(filename, 'r') as file:
+        content = file.read()
+
+        # Count each character type
+        for char in content:
+            if UPPERCASE_START <= char <= UPPERCASE_END:
+                uppercase_count += 1
+            elif LOWERCASE_START <= char <= LOWERCASE_END:
+                lowercase_count += 1
+            elif DIGIT_START <= char <= DIGIT_END:
+                digit_count += 1
+            elif char in WHITESPACE_CHARS:
+                whitespace_count += 1
+
+    # Print the results
+    print(f"Uppercase letters: {uppercase_count}")
+    print(f"Lowercase letters: {lowercase_count}")
+    print(f"Digits: {digit_count}")
+    print(f"Whitespace characters: {whitespace_count}")
+
+# Specify the file name
+filename = 'text.txt'
+count_characters(filename)
