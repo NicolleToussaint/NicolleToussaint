@@ -1,0 +1,32 @@
+print ("Nicolle Toussaint 2318394 Sep 6th, 2024")
+print ("This is Toussaints Square Feet Sizer") 
+# Define a constant for the number of square feet per acre
+SQUARE_FEET_PER_ACRE = 43560
+
+def calculate_acres(square_feet):
+    """Calculate the number of acres based on the square feet provided."""
+    return square_feet / SQUARE_FEET_PER_ACRE
+
+def main():
+    try:
+        # Get user input for the square feet of land
+        square_feet = float(input("Enter the square feet of your land: "))
+        
+        if square_feet < 0:
+            print("Square feet cannot be negative. Please enter a valid amount.")
+            return
+        
+        # Calculate the number of acres
+        acres = calculate_acres(square_feet)
+        
+        # Display the number of acres rounded to 2 decimal places
+        print(f"The number must be around : {acres:.2f} acres")
+    
+    except ValueError:
+        print("Invalid input. Please enter a numeric value for square feet.")
+
+# Run the main function
+if __name__ == "__main__":
+    main()
+print ("Sized your square feet to acres we have completed")
+
