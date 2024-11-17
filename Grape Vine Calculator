@@ -1,0 +1,51 @@
+print("Nicolle Toussaint 2318394 Sep 27th 2024")
+print("Grape Vine Calculator")
+import math
+
+# Constants for the formula
+END_POST_ASSEMBLY_COUNT = 2  # Number of end-post assemblies
+END_POST_SPACE = "space used by an end-post assembly (in feet, E)"
+
+def calculate_grapevines(length_of_row, space_end_post, space_between_vines):
+    """Calculate the number of grapevines that fit in a row."""
+    total_space_for_end_posts = END_POST_ASSEMBLY_COUNT * space_end_post
+    vines = (length_of_row - total_space_for_end_posts) / space_between_vines
+    return math.floor(vines)  # Round down to the nearest whole number
+
+def main():
+    print("Welcome to the NTM Grape Vine Calculator!")
+
+    while True:
+        try:
+            # Get user input
+            length_of_row = float(input("\nEnter the length of the row (in feet, R): "))
+            space_end_post = float(input(f"Enter the {END_POST_SPACE}: "))
+            space_between_vines = float(input("Enter the space between the vines (in feet, S): "))
+            
+            # Input validation
+            if length_of_row <= 0 or space_end_post < 0 or space_between_vines <= 0:
+                raise ValueError("Length of row must be positive and space values cannot be negative or zero.")
+            
+            # Calculate the number of grapevines
+            number_of_vines = calculate_grapevines(length_of_row, space_end_post, space_between_vines)
+
+            # Display the result
+            print("\n=======================================")
+            print(f"Length of the Row: {length_of_row} feet")
+            print(f"Space Used by End-Post Assembly: {space_end_post} feet")
+            print(f"Space Between Vines: {space_between_vines} feet")
+            print(f"Number of Grape Vines that can fit: {number_of_vines}")
+            print("=======================================")
+
+            # Ask if the user wants to perform another calculation
+            continue_calculation = input("Do you want to calculate for another row? (yes/no): ").strip().lower()
+            if continue_calculation != 'yes':
+                print("Thank you for using the NTM Grape Vine Calculator. Goodbye!")
+                break
+
+        except ValueError as e:
+            print(f"Error: {e}. Please enter valid numerical values.")
+
+if __name__ == "__main__":
+    main()
+
