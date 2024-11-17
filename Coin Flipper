@@ -1,0 +1,16 @@
+print("Nicolle Toussaint For fun codes")
+print("This is Toussaint's Coin Flipper")
+import random
+
+def flip_coin():
+    # Randomly choose between 0 and 1
+    result = random.choice(['Heads', 'Tails'])
+    return result
+
+# Example usage
+if __name__ == "__main__":
+    print("Flipping the coin...")
+    result = flip_coin()
+    print(f"The result is: {result}")
+print("You got your coin flip now flip out flipper")
+
