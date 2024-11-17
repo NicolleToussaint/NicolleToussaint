@@ -13,4 +13,3 @@ if __name__ == "__main__":
     result = flip_coin()
     print(f"The result is: {result}")
 print("You got your coin flip now flip out flipper")
-
