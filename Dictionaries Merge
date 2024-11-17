@@ -1,0 +1,52 @@
+print("Nicolle Toussaint 2318394 Nov 16th 2024")
+print("Toussaint Dictionaries")
+# Dictionaries with course details
+course_rooms = {
+    'CS101': 3004,
+    'CS102': 4501,
+    'CS103': 6755,
+    'NT110': 1244,
+    'CM241': 1411
+}
+
+course_instructors = {
+    'CS101': 'Haynes',
+    'CS102': 'Alvarado',
+    'CS103': 'Rich',
+    'NT110': 'Burke',
+    'CM241': 'Lee'
+}
+
+course_times = {
+    'CS101': '8:00 a.m.',
+    'CS102': '9:00 a.m.',
+    'CS103': '10:00 a.m.',
+    'NT110': '11:00 a.m.',
+    'CM241': '1:00 p.m.'
+}
+
+def get_course_info(course_number):
+    
+    if course_number in course_rooms:
+        room = course_rooms[course_number]
+        instructor = course_instructors[course_number]
+        time = course_times[course_number]
+        
+        print(f"Course: {course_number}")
+        print(f"Room Number: {room}")
+        print(f"Instructor: {instructor}")
+        print(f"Meeting Time: {time}")
+    else:
+        print("Sorry, the course number you entered does not exist.")
+
+# Main program
+def main():
+   
+    course_number = input("Enter a course number (e.g., CS101): ").strip()
+    
+    get_course_info(course_number)
+
+# Run the program
+if __name__ == "__main__":
+    main()
+
