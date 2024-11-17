@@ -1,0 +1,45 @@
+print ("Nicolle Toussaint 2318394 Sep 6th, 2024")
+print ("This is Toussaints Edible Cookie Maker")
+def calculate_ingredient_amounts(desired_cookies, base_cookies, sugar_cups, butter_cups, flour_cups):
+    """Calculate the amount of each ingredient needed for the desired number of cookies."""
+    # Calculate the scaling factor based on the desired number of cookies
+    scaling_factor = desired_cookies / base_cookies
+    
+    # Calculate the amount of each ingredient needed
+    sugar_needed = sugar_cups * scaling_factor
+    butter_needed = butter_cups * scaling_factor
+    flour_needed = flour_cups * scaling_factor
+    
+    return sugar_needed, butter_needed, flour_needed
+
+def main():
+    # Define the base recipe amounts for 48 cookies
+    BASE_COOKIES = 48
+    SUGAR_CUPS = 1.5
+    BUTTER_CUPS = 1.0
+    FLOUR_CUPS = 2.75
+    
+    try:
+        # Get user input for the desired number of cookies
+        desired_cookies = int(input("Enter the number of yummmy cookies you want to make: "))
+        
+        if desired_cookies <= 0:
+            print("The number of cookies must be a positive integer. Please enter a valid amount.")
+            return
+        
+        # Calculate the ingredient amounts needed
+        sugar_needed, butter_needed, flour_needed = calculate_ingredient_amounts(
+            desired_cookies, BASE_COOKIES, SUGAR_CUPS, BUTTER_CUPS, FLOUR_CUPS
+        )
+        
+        # Display the results
+        print(f"\nTo make {desired_cookies} cookies, you will need:")
+        print(f"{sugar_needed:.2f} cups of sugar")
+        print(f"{butter_needed:.2f} cups of butter")
+        print(f"{flour_needed:.2f} cups of flour")
+    
+    except ValueError:
+        print("Invalid input. Please enter a valid integer for the number of cookies.")
+
+# Run the main function
+if __name__ == "__main__":
