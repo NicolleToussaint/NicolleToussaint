@@ -1,0 +1,37 @@
+import random
+print("Nicolle Toussaint for fun codes")
+print("Magic 8-Ball")
+
+def magic_eight_ball():
+    responses = [
+        "Totally Yess!",
+        "AHHH NO BISSH.",
+        "Not sure but its a possibility.",
+        "Definitely not dont even try it.",
+        "Ask again later bc I cant even with that question right now.",
+        "I don't know maybe ask your local mother.",
+        "Most likely to work out if you go about it properly.",
+        "Outlook not looking too shabby def would not recommend."
+    ]
+    
+    # Randomly select a response
+    return random.choice(responses)
+
+def main():
+    print("Welcome to the Magic 8-Ball!")
+    
+    while True:
+        question = input("Ask a yes-or-no question (or type 'exit' to quit): ")
+        
+        if question.lower() == 'exit':
+            print("Thanks for playing. Goodbye!")
+            break
+        
+        print("Thinking shit give me a second...")
+        answer = magic_eight_ball()
+        print(f"The Magic 8-Ball says: {answer}")
+        print("Maybe ask the Magic internet for follow up. I'm no tarot card.\n")
+
+if __name__ == "__main__":
+    main()
+
