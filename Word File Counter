@@ -1,0 +1,59 @@
+print ("Nicolle Toussaint 2318394 December 6th, 2024")
+print ("This is Toussaints Word tracker")
+import os
+
+# Function to read file, count word frequencies, and display the result
+def word_frequency(filename):
+    # Check if the file exists
+    if not os.path.exists(filename):
+        print(f"Error: The file '{filename}' does not exist.")
+        return
+    
+    # Initialize an empty dictionary to store word frequencies
+    word_count = {}
+
+    try:
+        # Open the file for reading
+        with open(filename, 'r') as file:
+            # Read the file content
+            content = file.read()
+            
+            # Split content into words (split by any whitespace)
+            words = content.split()
+
+            # Count frequency of each word
+            for word in words:
+                word = word.lower()  # Convert to lowercase for case-insensitive counting
+                word_count[word] = word_count.get(word, 0) + 1
+        
+        # Display word frequencies in a column format
+        print(f"\nWord frequencies in '{filename}':")
+        print(f"{'Word':<20} {'Frequency':>10}")  # Headers
+        print("-" * 30)  # Separator line
+        
+        for word, count in sorted(word_count.items()):
+            print(f"{word:<20} {count:>10}")
+        
+        # Ask user for the output file name
+        output_filename = input("\nEnter the output file name to save word frequencies: ")
+        
+        # Save the word frequencies to the output file
+        with open(output_filename, 'w') as output_file:
+            for word, count in sorted(word_count.items()):
+                output_file.write(f"{word} {count}\n")
+        
+        print(f"\nWord frequencies have been saved to '{output_filename}'.")
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Main function to ask for input file and run the program
+def main():
+    # Ask user for input file name
+    input_filename = input("Enter the input file name: ")
+
+    # Call the word_frequency function to process the file
+    word_frequency(input_filename)
+
+if __name__ == "__main__":
+    main()
