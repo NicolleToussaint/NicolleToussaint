@@ -1,0 +1,93 @@
+print ("Nicolle Toussaint 2318394 December 6th, 2024")
+import os
+
+# Constants for the number ranges
+MIN_MAIN_NUMBER = 1
+MAX_MAIN_NUMBER = 69
+MIN_POWERBALL_NUMBER = 1
+MAX_POWERBALL_NUMBER = 26
+NUM_NUMBERS_PER_LINE = 6  # Total of 5 main numbers + 1 PowerBall number
+
+# Function to process the PowerBall numbers and calculate the frequencies
+def process_powerball_file(filename):
+    # Initialize dictionaries to store frequencies of main numbers and PowerBall numbers
+    main_number_frequencies = {i: 0 for i in range(MIN_MAIN_NUMBER, MAX_MAIN_NUMBER + 1)}  # Numbers 1-69
+    powerball_frequencies = {i: 0 for i in range(MIN_POWERBALL_NUMBER, MAX_POWERBALL_NUMBER + 1)}  # PowerBall numbers 1-26
+    
+    invalid_lines_count = 0  # Counter for discarded lines
+
+    # Check if the file exists
+    if not os.path.exists(filename):
+        print(f"Error: The file '{filename}' does not exist.")
+        return
+
+    try:
+        # Open the file for reading
+        with open(filename, 'r') as file:
+            # Read the file content line by line
+            lines = file.readlines()
+
+        # Log the total number of lines in the file
+        print(f"Total lines in the file: {len(lines)}")
+
+        # Process each line
+        for line in lines:
+            # Split the line into a list of numbers
+            numbers = line.split()
+            
+            # Ensure that the line contains exactly NUM_NUMBERS_PER_LINE numbers (5 main + 1 PowerBall)
+            if len(numbers) != NUM_NUMBERS_PER_LINE:
+                invalid_lines_count += 1
+                continue
+
+            # Convert the numbers to integers
+            try:
+                numbers = [int(num) for num in numbers]
+            except ValueError:
+                invalid_lines_count += 1
+                continue
+
+            # Separate the main numbers and PowerBall number
+            main_numbers = numbers[:-1]  # First 5 numbers are the main numbers
+            powerball_number = numbers[-1]  # Last number is the PowerBall number
+
+            # Check if the main numbers and PowerBall number are within valid ranges
+            if not all(MIN_MAIN_NUMBER <= num <= MAX_MAIN_NUMBER for num in main_numbers):
+                invalid_lines_count += 1
+                continue
+            if not (MIN_POWERBALL_NUMBER <= powerball_number <= MAX_POWERBALL_NUMBER):
+                invalid_lines_count += 1
+                continue
+
+            # Update the frequencies
+            for num in main_numbers:
+                main_number_frequencies[num] += 1
+            powerball_frequencies[powerball_number] += 1
+
+        # Display the frequency of each main number (1–69)
+        print("\nFrequency of each main number (1-69):")
+        for num in range(MIN_MAIN_NUMBER, MAX_MAIN_NUMBER + 1):
+            print(f"{num:2}: {main_number_frequencies[num]}")
+
+        # Display the frequency of each PowerBall number (1-26)
+        print("\nFrequency of each PowerBall number (1-26):")
+        for num in range(MIN_POWERBALL_NUMBER, MAX_POWERBALL_NUMBER + 1):
+            print(f"{num:2}: {powerball_frequencies[num]}")
+
+        # Display the number of discarded lines
+        print(f"\nTotal lines discarded: {invalid_lines_count}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Main function
+def main():
+    # Ask the user for the input file name
+    filename = input("Enter the PowerBall numbers file name: ")
+
+    # Call the function to process the file and display the results
+    process_powerball_file(filename)
+
+# Run the program
+if __name__ == "__main__":
+    main()
