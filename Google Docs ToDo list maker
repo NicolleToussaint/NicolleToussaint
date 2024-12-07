@@ -1,0 +1,128 @@
+#Nicolle Toussaint Google Doc ToDo list 
+import os
+import pickle
+import datetime
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+# The scope for Google Docs API
+SCOPES = ['https://www.googleapis.com/auth/documents']
+
+# Path to the credentials file you downloaded from Google Cloud
+CREDENTIALS_FILE = 'credentials.json'
+
+# Your Google Docs document ID (you can create a new document and get its ID)
+DOCUMENT_ID = 'your-google-doc-id'
+
+# Authenticate and build the Docs API service
+def authenticate_google_docs():
+    creds = None
+    # Token file stores the user's access and refresh tokens
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+
+    # If there are no (valid) credentials available, let the user log in
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    # Build the Docs API service
+    service = build('docs', 'v1', credentials=creds)
+    return service
+
+def get_document(service):
+    try:
+        # Retrieve the document content
+        document = service.documents().get(documentId=DOCUMENT_ID).execute()
+        return document
+    except HttpError as err:
+        print(f"An error occurred: {err}")
+        return None
+
+def append_task(service, task_description):
+    # Get the current content of the document
+    document = get_document(service)
+    
+    if document:
+        # Create a request to append a task
+        requests = [{
+            'insertText': {
+                'location': {
+                    'index': document['body']['content'][-1]['endIndex'] - 1,
+                },
+                'text': f"\n{task_description} - Added on {datetime.date.today()}",
+            }
+        }]
+        
+        # Execute the request to insert the task into the document
+        service.documents().batchUpdate(documentId=DOCUMENT_ID, body={'requests': requests}).execute()
+        print(f"Task added: {task_description}")
+
+def mark_task_complete(service, task_index):
+    # Retrieve the current document content
+    document = get_document(service)
+    
+    if document:
+        # Find the task and mark it as complete
+        content = document['body']['content']
+        task_text = content[task_index]['paragraph']['elements'][0]['textRun']['content']
+        
+        # Modify the task text to indicate it is completed
+        updated_task = task_text.strip() + " - ✔️ Completed"
+        
+        requests = [{
+            'replaceText': {
+                'containsText': {
+                    'text': task_text.strip(),
+                    'matchCase': True,
+                },
+                'replaceText': updated_task,
+            }
+        }]
+        
+        # Execute the request to update the task
+        service.documents().batchUpdate(documentId=DOCUMENT_ID, body={'requests': requests}).execute()
+        print(f"Task marked as completed: {updated_task}")
+
+if __name__ == "__main__":
+    # Authenticate to Google Docs API
+    service = authenticate_google_docs()
+
+    while True:
+        print("\n1. Show To-Do List")
+        print("2. Add a Task")
+        print("3. Complete a Task")
+        print("4. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            # Retrieve and display the current to-do list
+            document = get_document(service)
+            if document:
+                print("\nTo-Do List:")
+                for item in document['body']['content']:
+                    if 'paragraph' in item:
+                        task = item['paragraph']['elements'][0].get('textRun', {}).get('content')
+                        if task:
+                            print(task.strip())
+        elif choice == "2":
+            task = input("Enter the task description: ")
+            append_task(service, task)
+        elif choice == "3":
+            # Ask user for the task to complete
+            task_index = int(input("Enter the task number to complete: ")) - 1
+            mark_task_complete(service, task_index)
+        elif choice == "4":
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
