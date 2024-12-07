@@ -1,0 +1,54 @@
+print ("Nicolle Toussaint 2318394 December 6th, 2024")
+print ("This is Toussaints Triangle")
+import random
+
+# Constants for the game
+LOW = 1
+HIGH = 500
+MAX_GUESSES = 10
+
+# Function to generate a triangular random number between LOW and HIGH
+def generate_random_number(low, high):
+    mode = (low + high) / 2  # Mode is the midpoint between low and high
+    return int(random.triangular(low, high, mode))
+
+# Main game function
+def play_game():
+    while True:
+        random_number = generate_random_number(LOW, HIGH)
+        guesses_left = MAX_GUESSES
+        guesses_count = 0
+        
+        print(f"I have generated a random number between {LOW} and {HIGH}.")
+        print(f"You have {guesses_left} attempts to guess the number.")
+        
+        while guesses_left > 0:
+            try:
+                guess = int(input(f"Guess #{guesses_count + 1}: "))
+            except ValueError:
+                print("Please enter a valid integer.")
+                continue
+            
+            guesses_count += 1
+            guesses_left -= 1
+            
+            if guess > random_number:
+                print("Too high, try again.")
+            elif guess < random_number:
+                print("Too low, try again.")
+            else:
+                print(f"Congratulations! You've guessed the number {random_number} in {guesses_count} guesses.")
+                break
+            
+            if guesses_left == 0:
+                print(f"Sorry! You've used all your guesses. The correct number was {random_number}.")
+        
+        play_again = input("Do you want to play again? (y/n): ").lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
+            break
+
+# Run the game
+if __name__ == "__main__":
+    play_game()
+
