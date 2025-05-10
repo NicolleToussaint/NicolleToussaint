@@ -1,3 +1,5 @@
+![Banner](./profile-banner.png)
+
 # Hi, I'm Nicolle Toussaint 💻✨
 
 I’m a human-centered developer passionate about building emotionally intelligent tech—from robotic companions to secure systems that care.
