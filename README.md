@@ -26,7 +26,6 @@ Tech Interests: Prompt Engineering, Companion Robotics, Accessibility, Ethical A
 • Build a polished prompt engineering and AI development portfolio
 • Secure a remote entry level role in prompt engineering, AI research, or inclusive AI development
 
-📬 Let’s Connect
 
 📬 **Let’s Connect**  
 [LinkedIn](https://linkedin.com/in/sharron-toussaint-myers-b084a5245) | Nicolle@NeuroElTech.com
