@@ -2,28 +2,31 @@
 
 # Hi, I'm Nicolle Toussaint 💻✨
 
-I’m a human-centered developer passionate about building emotionally intelligent tech—from robotic companions to secure systems that care.
+I’m a human centered developer passionate about building emotionally intelligent tech from AI prompts to robotics prototypes that expand accessibility and inclusion.
 
-🔍 **What I'm Working On**
-- 🤖 **LyraBot** – An AI-powered emotional support companion for neurodivergent users, elderly care, and education settings.
-- 🛡️ **Cybersecurity & Automation** – Currently studying LAN security and building real-world automation tools in Python.
-- 💬 **Mental Health Tech** – Blending counseling and coding to create tools that listen, learn, and emotionally adapt.
+🔍 What I'm Working On
+💻 GitHub Portfolio – Expanding repositories with Python projects, data structures, and automation tools
+🧪 Prompt Engineering – Running experiments across GPT and local LLMs to study consistency, context use, and multi model workflows
+🏠 Home Lab Projects – Building a personal lab environment for Python automation, LAN experiments, and Raspberry Pi prototypes
+🤖 AI Robotics Prototype – LyraBot, a personal AI robotics concept blending movement and emotional support functions
 
-🚀 **Skills & Tools**
-- **Languages**: Python, Java, HTML/CSS, JavaScript (learning React & C)
-- **Hardware**: Raspberry Pi, PiDog, Freenove Hexapod
-- **AI & APIs**: OpenAI GPT, local LLMs, Voice Simulation
-- **Tech Interests**: Companion Robotics, Neuro-Inclusive Design, Accessibility, Ethical AI
+🚀 Skills & Tools
+Languages: Python, Java, HTML/CSS, JavaScript (learning React & C)
+Hardware: Raspberry Pi, PiDog, Freenove Hexapod
+AI & APIs: OpenAI GPT, Hugging Face Spaces, local LLMs, Voice Simulation
+Tech Interests: Prompt Engineering, Companion Robotics, Accessibility, Ethical AI
 
-📌 **Featured Projects**
-- **LyraBot-Core** – Coming soon: Movement and AI code for my robotic companion
-- **Python Data Structures** – Coursework covering core logic and concepts
-- **Gratitude Jar App** – WIP: A mobile app for storing & replaying gratitude entries
+📌 Featured Projects
+• GitHub Repos – Python coursework, data structures, and growing AI experiments
+• Gratitude Jar App (WIP) – Mobile app for storing and replaying gratitude entries
+• Prompt Recipes – Documenting workflows that chain tools, prompts, and outputs
 
-🎯 **My Goals**
-- Launch a micro-business around LyraBot for caregivers, classrooms, and companion support
-- Earn my Human-Centered AI degree and lead inclusive AI development projects
-- Secure a fully remote tech position focused on emotional AI, robotics, or accessibility
+🎯 My Goals
+• Earn my degree at Texas Tech University (Human Centered AI / Data Science / Psychology)
+• Build a polished prompt engineering and AI development portfolio
+• Secure a remote entry level role in prompt engineering, AI research, or inclusive AI development
+
+📬 Let’s Connect
 
 📬 **Let’s Connect**  
 [LinkedIn](https://linkedin.com/in/sharron-toussaint-myers-b084a5245) | Nicolle@NeuroElTech.com
